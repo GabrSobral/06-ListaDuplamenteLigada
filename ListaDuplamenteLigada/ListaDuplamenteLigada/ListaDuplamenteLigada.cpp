@@ -23,16 +23,13 @@ void excluirUltimoElemento();
 
 //--------------------------
 
-
-int main()
-{
+int main() {
 	menu();
 }
 
-void menu()
-{
+void menu() {
 	int op = 0;
-	while (op != 7) {
+	while (op != 8) {
 		system("cls"); // somente no windows
 		cout << "Menu Lista Ligada";
 		cout << endl << endl;
@@ -48,34 +45,32 @@ void menu()
 		cout << "Opcao: ";
 		cin >> op;
 
-		switch (op)
-		{
-		case 1: inicializar();
-			break;
-		case 2:inserirElemento();
-			break;
-		case 3: exibirQuantidadeElementos(); 
-			break;
-		case 4: exibirElementos();
-			break;
-		case 5: exibirReverso();
-			break;
-		case 6: excluirPrimeiroElemento();
-			break;
-		case 7: excluirUltimoElemento();
-			break;
-		case 8:
-			return;
-		default:
-			break;
+		switch (op) {
+			case 1: inicializar();
+				break;
+			case 2:inserirElemento();
+				break;
+			case 3: exibirQuantidadeElementos(); 
+				break;
+			case 4: exibirElementos();
+				break;
+			case 5: exibirReverso();
+				break;
+			case 6: excluirPrimeiroElemento();
+				break;
+			case 7: excluirUltimoElemento();
+				break;
+			case 8:
+				return;
+			default:
+				break;
 		}
 
 		system("pause"); // somente no windows
 	}
 }
 
-void inicializar()
-{
+void inicializar() {
 	// se a lista ja possuir elementos
 // libera a memoria ocupada
 	NO* aux = primeiro;
@@ -103,8 +98,7 @@ void exibirQuantidadeElementos() {
 
 }
 
-void exibirElementos()
-{
+void exibirElementos() {
 	if (primeiro == NULL) {
 		cout << "Lista vazia \n";
 		return;
@@ -112,6 +106,7 @@ void exibirElementos()
 	else {
 		cout << "Elementos: \n";
 		NO* aux = primeiro;
+
 		while (aux != NULL) {
 			cout << aux->valor << endl;
 			aux = aux->prox;
@@ -119,12 +114,10 @@ void exibirElementos()
 	}
 }
 
-void inserirElemento()
-{
+void inserirElemento() {
 	// aloca memoria dinamicamente para o novo elemento
 	NO* novo = (NO*)malloc(sizeof(NO));
-	if (novo == NULL)
-	{
+	if (novo == NULL) {
 		return;
 	}
 
@@ -133,13 +126,10 @@ void inserirElemento()
 	novo->prox = NULL;
 	novo->ant = NULL;
 
-	if (primeiro == NULL)
-	{
+	if (primeiro == NULL) {
 		primeiro = novo;
 		ultimo = novo;
-	}
-	else
-	{
+	} else {
 		novo->ant = ultimo;
 		ultimo->prox = novo;
 		ultimo = novo;
@@ -147,24 +137,33 @@ void inserirElemento()
 }
 
 
-// funções a serem implementadas no exericio
-void exibirReverso()
-{
+// funï¿½ï¿½es a serem implementadas no exericio
+void exibirReverso(){
+	NO* atual = ultimo;
 
+	while (atual != NULL) {
+		cout << atual->valor << endl;
+		atual = atual->ant;	
+	}
 }
 
-void excluirPrimeiroElemento()
-{
+void excluirPrimeiroElemento() {
+	NO* segundoElemento = primeiro->prox;
+	primeiro = segundoElemento;
 
+	free(segundoElemento->ant);
+	segundoElemento->ant = NULL;
 }
 
-void excluirUltimoElemento()
-{
+void excluirUltimoElemento() {
+	if(!ultimo) {
+		cout << "NÃ£o hÃ¡ elementos para excluir!";
+		return;
+	}
 
+	NO* penultimoElemento = ultimo->ant;
+	ultimo = penultimoElemento;
+
+	free(penultimoElemento->prox);
+	penultimoElemento->prox = NULL;
 }
-
-
-
-
-
-
