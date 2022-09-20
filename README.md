@@ -1,4 +1,6 @@
 # Lista Duplamente Ligada 
+- nome: Gabriel Sobral dos Santos
+- email: Gabriel.Santos378@fatec.sp.gov.br
 ---
 
 ## Objetivos

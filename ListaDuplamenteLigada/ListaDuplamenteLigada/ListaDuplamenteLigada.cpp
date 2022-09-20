@@ -148,6 +148,15 @@ void exibirReverso(){
 }
 
 void excluirPrimeiroElemento() {
+	if(!primeiro) {
+		cout << "Não há elementos para excluir!";
+		return;
+	} else if(primeiro->prox) {
+		free(primeiro);
+		primeiro = NULL;
+		ultimo = NULL;
+	}
+
 	NO* segundoElemento = primeiro->prox;
 	primeiro = segundoElemento;
 
@@ -159,6 +168,10 @@ void excluirUltimoElemento() {
 	if(!ultimo) {
 		cout << "Não há elementos para excluir!";
 		return;
+	} else if(primeiro->prox) {
+		free(primeiro);
+		primeiro = NULL;
+		ultimo = NULL;
 	}
 
 	NO* penultimoElemento = ultimo->ant;
